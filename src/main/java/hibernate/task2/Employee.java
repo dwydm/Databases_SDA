@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table(name="Employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer id;
 
@@ -25,6 +25,10 @@ public class Employee {
 
     @Column
     private String email;
+
+    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @JoinColumn(name = "business_phone")
+    private Phone businessPhone;
 
 
     public Employee(String name, String surname, LocalDate birthdate, String email) {
@@ -75,6 +79,14 @@ public class Employee {
         this.email = email;
     }
 
+    public Phone getBusinessPhone() {
+        return businessPhone;
+    }
+
+    public void setBusinessPhone(Phone businessPhone) {
+        this.businessPhone = businessPhone;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -83,6 +95,7 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", birthdate=" + birthdate +
                 ", email='" + email + '\'' +
+                ", businessPhone=" + businessPhone +
                 '}';
     }
 }
