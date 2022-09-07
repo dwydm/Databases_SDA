@@ -22,16 +22,14 @@ public class Phone {
     @Column
     private String model;
 
-    @OneToOne(mappedBy = "businessPhone", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "phone", fetch = FetchType.EAGER)
     private Employee employee;
 
     public Phone(String phoneNumber, String brand, String model) {
         this.phoneNumber = phoneNumber;
         this.brand = brand;
         this.model = model;
-        this.employee = employee;
     }
-
 
     public Integer getId() {
         return id;

@@ -1,10 +1,8 @@
 package hibernate.task2;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="Employee")
@@ -27,8 +25,16 @@ public class Employee {
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
-    @JoinColumn(name = "business_phone")
-    private Phone businessPhone;
+    @JoinColumn(name = "phone")
+    private Phone phone;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
+    private List<Tasks> taskList;
+
+    @ManyToMany(mappedBy = "employeeList")
+    private List<Projects> projectsList;
+
+
 
 
     public Employee(String name, String surname, LocalDate birthdate, String email) {
@@ -79,12 +85,28 @@ public class Employee {
         this.email = email;
     }
 
-    public Phone getBusinessPhone() {
-        return businessPhone;
+    public Phone getPhone() {
+        return phone;
     }
 
-    public void setBusinessPhone(Phone businessPhone) {
-        this.businessPhone = businessPhone;
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+
+    public List<Tasks> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Tasks> taskList) {
+        this.taskList = taskList;
+    }
+
+    public List<Projects> getProjectsList() {
+        return projectsList;
+    }
+
+    public void setProjectsList(List<Projects> projectsList) {
+        this.projectsList = projectsList;
     }
 
     @Override
@@ -95,7 +117,7 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", birthdate=" + birthdate +
                 ", email='" + email + '\'' +
-                ", businessPhone=" + businessPhone +
+                ", businessPhone=" + phone +
                 '}';
     }
 }

@@ -3,17 +3,14 @@ package hibernate.introduction;
 import hibernate.helper.HibernateUtil;
 import hibernate.task2.Employee;
 import hibernate.task2.Phone;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.time.LocalDate;
-import java.util.List;
 
 public class HibernateIntroduction {
     public static void main(String[] args) {
-/*        Session session = HibernateUtil.getSessionFactory().openSession();
+/*      Session session = HibernateUtil.getSessionFactory().openSession();
 
         session.beginTransaction();
 
@@ -23,7 +20,7 @@ public class HibernateIntroduction {
 
 
         session.getTransaction().commit();
-        session.close();*/
+        session.close();*//*
 
 
 
@@ -42,9 +39,9 @@ public class HibernateIntroduction {
         bphone3.setEmployee(empl3);
         bphone1.setEmployee(empl5);
         bphone1.setEmployee(empl2);
-        empl3.setBusinessPhone(bphone3);
-        empl5.setBusinessPhone(bphone1);
-        empl2.setBusinessPhone(bphone2);
+        empl3.setPhone(bphone3);
+        empl5.setPhone(bphone1);
+        empl2.setPhone(bphone2);
 
 
         entityManager.getTransaction().begin();
@@ -58,17 +55,25 @@ public class HibernateIntroduction {
         //entityManager.flush(); // aktualizacja wczesniejsza w jednej transakcji
 
 
-        entityManager.getTransaction().commit();
+*//*        entityManager.getTransaction().commit();
         Employee emplz = entityManager.find(Employee.class, 1);
-        System.out.println(emplz);
+        System.out.println(emplz);*//*
 
-        Query query = entityManager.createQuery("from Employee as e where e.surname like:sm");
+*//*        Query query = entityManager.createQuery("from Employee as e where e.surname like:sm");
         query.setParameter("sm","Dywan");
         List<Employee> list = query.getResultList();
 
-        list.forEach(System.out::println);
+        list.forEach(System.out::println);*//*
+
+
+        HibernateUtil.shutdown();*/
+
+        final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        final EntityManager entityManager = sessionFactory.createEntityManager();
+
 
 
         HibernateUtil.shutdown();
+
     }
 }
