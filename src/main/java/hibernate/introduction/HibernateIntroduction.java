@@ -68,12 +68,6 @@ public class HibernateIntroduction {
 
         HibernateUtil.shutdown();*/
 
-        final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        final EntityManager entityManager = sessionFactory.createEntityManager();
-
-
-
-        HibernateUtil.shutdown();
 
     }
 }
