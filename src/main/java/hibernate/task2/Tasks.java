@@ -3,7 +3,7 @@ package hibernate.task2;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "tasks")
 public class Tasks {
     @Id
     @Column

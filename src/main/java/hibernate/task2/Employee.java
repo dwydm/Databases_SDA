@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name="Employee")
+@Table(name="employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Employee {
     @Column
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "phone")
     private Phone phone;
 
@@ -35,7 +35,8 @@ public class Employee {
     private List<Projects> projectsList;
 
 
-
+    public Employee() {
+    }
 
     public Employee(String name, String surname, LocalDate birthdate, String email) {
         this.id = id;

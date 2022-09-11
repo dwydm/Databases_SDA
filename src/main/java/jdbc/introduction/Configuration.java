@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Configuration {
+/*
     //Connection and saving to xml file
     private static final String DB_URL = "jdbc:mysql://localhost:3306/?useSSL=false";
     private static String propertiesFile = "src/main/resources/jdbc_properties.xml";
@@ -69,5 +70,6 @@ public class Configuration {
             throw new RuntimeException(e);
         }
     }
+*/
 
 }

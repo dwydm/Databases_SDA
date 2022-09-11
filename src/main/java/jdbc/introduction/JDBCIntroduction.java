@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBCIntroduction {
+/*
     private static Statement stmt = null;  //tworzone query nie są zabezpieczone przed SQL Injection
     private static Connection conn = Configuration.connectToDB();
 
@@ -75,5 +76,6 @@ public class JDBCIntroduction {
             throw new RuntimeException(e);
         }
     }
+*/
 
 }

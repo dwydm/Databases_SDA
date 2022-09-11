@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
-@Table
+@Table(name = "phone")
 public class Phone {
 
     @Id
@@ -15,20 +15,18 @@ public class Phone {
     private Integer id;
     @Column(name = "phone_number")
     private String phoneNumber;
-
     @Column
-    private String brand;
+    private PhoneBrand brand;
 
-    @Column
-    private String model;
-
-    @OneToOne(mappedBy = "phone", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "phone", fetch = FetchType.LAZY)
     private Employee employee;
 
-    public Phone(String phoneNumber, String brand, String model) {
+    public Phone() {
+    }
+
+    public Phone(String phoneNumber, PhoneBrand brand) {
         this.phoneNumber = phoneNumber;
         this.brand = brand;
-        this.model = model;
     }
 
     public Integer getId() {
@@ -47,20 +45,12 @@ public class Phone {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getBrand() {
+    public PhoneBrand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(PhoneBrand brand) {
         this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public Employee getEmployee() {
@@ -77,8 +67,6 @@ public class Phone {
                 "id=" + id +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", employee=" + employee +
                 '}';
     }
 }
